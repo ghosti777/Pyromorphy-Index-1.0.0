@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Pyromorph Index 2.0 🔥</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .container { max-width: 500px; margin: auto; }
+        .indicator { display: flex; justify-content: space-between; padding: 5px; }
+        .timeframe { margin-top: 15px; }
+        button { padding: 10px; margin-top: 15px; cursor: pointer; }
+        .result { font-size: 24px; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔥 Pyromorph Index 2.0 🔥</h2>
+        <p>Select indicators and choose timeframe:</p>
+        <div id="indicators">
+            <div class="indicator"><span>Redk EverX</span><input type="checkbox" class="indicator-checkbox" value="5"></div>
+            <div class="indicator"><span>AlgoAlpha Trend Strength TPs</span><input type="checkbox" class="indicator-checkbox" value="4"></div>
+            <div class="indicator"><span>Liquidity Grabs (Flux Charts)</span><input type="checkbox" class="indicator-checkbox" value="3"></div>
+            <div class="indicator"><span>Adaptive Supertrend (Entry/Exit)</span><input type="checkbox" class="indicator-checkbox" value="4"></div>
+            <div class="indicator"><span>Adaptive Supertrend (Weather)</span><input type="checkbox" class="indicator-checkbox" value="3"></div>
+            <div class="indicator"><span>Support & Demand Zones</span><input type="checkbox" class="indicator-checkbox" value="4"></div>
+            <div class="indicator"><span>EMA/SMA Resistance</span><input type="checkbox" class="indicator-checkbox" value="3"></div>
+            <div class="indicator"><span>JsSqzPro2</span><input type="checkbox" class="indicator-checkbox" value="3"></div>
+            <div class="indicator"><span>STC (Green Confirmation)</span><input type="checkbox" class="indicator-checkbox" value="2"></div>
+            <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" class="indicator-checkbox" value="4"></div>
+            <div class="indicator"><span>Lux Algo Supertrend AI</span><input type="checkbox" class="indicator-checkbox" value="3"></div>
+            <div class="indicator"><span>Micromorph Liquidity Flow</span><input type="checkbox" class="indicator-checkbox" value="3"></div>
+            <div class="indicator"><span>Order Block Confirmation</span><input type="checkbox" class="indicator-checkbox" value="4"></div>
+            <div class="indicator"><span>Volume Delta Shift</span><input type="checkbox" class="indicator-checkbox" value="3"></div>
+        </div>
+        <div class="timeframe">
+            <label for="timeframe">Select Timeframe:</label>
+            <select id="timeframe">
+                <option value="1.0">1M - 5M</option>
+                <option value="1.3">15M</option>
+                <option value="1.5">30M</option>
+            </select>
+        </div>
+        <button onclick="calculateScore()">🔥 Calculate Pyromorph Score 🔥</button>
+        <div class="result" id="result">Score: --</div>
+    </div>
+
+    <script>
+        function calculateScore() {
+            let checkboxes = document.querySelectorAll('.indicator-checkbox:checked');
+            let score = 0;
+            checkboxes.forEach(cb => score += parseFloat(cb.value));
+            
+            let timeframeMultiplier = parseFloat(document.getElementById('timeframe').value);
+            let finalScore = score * timeframeMultiplier;
+            let normalizedScore = (finalScore / 60.1) * 100;
+            let resultText = `Score: ${normalizedScore.toFixed(1)}`;
+            
+            if (normalizedScore >= 80) resultText += " 🔥 Ultra High Conviction";
+            else if (normalizedScore >= 65) resultText += " ✅ High Conviction";
+            else if (normalizedScore >= 50) resultText += " ⚖️ Moderate Conviction";
+            else if (normalizedScore >= 30) resultText += " 🟡 Low Conviction";
+            else resultText += " ❌ Weak / No Trade";
+            
+            document.getElementById('result').innerText = resultText;
+        }
+    </script>
+</body>
+</html>
